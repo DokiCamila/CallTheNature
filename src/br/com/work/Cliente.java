@@ -16,7 +16,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.Socket;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -140,6 +139,21 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+    public void enviarMensagem(String msg) throws IOException{
+
+        if(msg.equals("Sair")){
+            bfw.write("Desconectado \r\n");
+            texto.append("Desconectado \r\n");
+        }else{
+            bfw.write(msg+"\r\n");
+            texto.append( txtNome.getText() + " : " + txtMsg.getText()+"\r\n");
+        }
+        bfw.flush();
+        txtMsg.setText("");
+    }
+	
     public void escutar() throws IOException{
 
         InputStream in = socket.getInputStream();
@@ -158,18 +172,7 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
             }
     }
     
-    public void enviarMensagem(String msg) throws IOException{
 
-        if(msg.equals("Sair")){
-            bfw.write("Desconectado \r\n");
-            texto.append("Desconectado \r\n");
-        }else{
-            bfw.write(msg+"\r\n");
-            texto.append( txtNome.getText() + " : " + txtMsg.getText()+"\r\n");
-        }
-        bfw.flush();
-        txtMsg.setText("");
-    }
 	@Override
 	public void keyPressed(KeyEvent e) {
 

@@ -11,7 +11,9 @@ package br.com.work;
 	import java.net.ServerSocket;
 	import java.net.Socket;
 	import java.util.ArrayList;
-	import javax.swing.JLabel;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 	import javax.swing.JOptionPane;
 	import javax.swing.JTextField;
 
@@ -40,7 +42,7 @@ public class Server extends Thread{
 		        }
 		    }
 		    
-		    public void run(){
+		 public void run(){
 
 		        try{
 
@@ -71,23 +73,24 @@ public class Server extends Thread{
 		        for(BufferedWriter bw : clientes){
 		            bwS = (BufferedWriter)bw;
 		            if(!(bwSaida == bwS)){
-		                bw.write(nome + " -> " + msg+"\r\n");
+		                bw.write(nome + " : " + msg+"\r\n");
 		                bw.flush();
 		            }
 		        }
 		    }
+
 		    public static void main(String []args) {
 
 		        try{
 		            //Cria os objetos necessário para instânciar o servidor
 		            JLabel lblMessage = new JLabel("Porta do Servidor:");
-		            JTextField txtPorta = new JTextField("8");
+		            JTextField txtPorta = new JTextField("1234");
 		            Object[] texts = {lblMessage, txtPorta };
-		            JOptionPane.showMessageDialog(null, texts);
+		            JOptionPane.showMessageDialog(null, texts,"Call The Nature!",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("Image/ecology-2.png"));
 		            server = new ServerSocket(Integer.parseInt(txtPorta.getText()));
 		            clientes = new ArrayList<BufferedWriter>();
 		            JOptionPane.showMessageDialog(null,"Servidor ativo na porta: "+
-		                    txtPorta.getText());
+		                    txtPorta.getText(),"Call The Nature!",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("Image/ecology-2.png"));
 
 		            while(true){
 		                System.out.println("Aguardando conexão...");
