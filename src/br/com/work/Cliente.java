@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 import br.com.work.Cliente;
 
@@ -70,7 +71,7 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
     	txtNome = new JTextField("Seu nome aqui");
     	
     	Object[] texts = {lblMensage,lblInfo,lblIp,txtIp,lblPorta,txtPorta,lblNome, txtNome};
-    	JOptionPane.showMessageDialog(null,texts);
+    	JOptionPane.showMessageDialog(null,texts,"Call The Nature!",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("Image/trees.png"));
     	
     	
     	
