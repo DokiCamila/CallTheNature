@@ -1,6 +1,7 @@
 package br.com.work;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -38,6 +39,7 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
     private JLabel lblMensagem;
     private JLabel lblIp;
     private JLabel lblPorta;
+    private JLabel lblNome;
     private JTextArea texto;
     private JTextField txtMsg;
     private JTextField txtIp;
@@ -50,21 +52,36 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
 
     
     public Cliente() throws IOException{
+    	//tela de login
+    	JLabel lblMensage = new JLabel("Bem vindo ao Call The Nature! ");
+    	JLabel lblInfo = new JLabel("Por favor confirme as informações abaixo.");
+    	lblMensage.setFont(new Font("Dialog",Font.ITALIC, 20));
+    	lblMensage.setForeground(Color.BLACK);
+    	lblInfo.setForeground(Color.darkGray);
     	
-    	JLabel lblMensage = new JLabel("Bem vindo ao Call The Nature! Por favor confirme as informações abaixo.");
+    	lblIp = new JLabel("Digite o IP de sua máquina:");
+    	lblIp.setForeground(Color.darkGray);
+    	txtIp = new JTextField("127.0.0.1 - IP padrão");
+    	lblPorta = new JLabel("Digite a porta do Servidor:");
+    	lblPorta.setForeground(Color.darkGray);
+    	txtPorta = new JTextField("Sua porta aqui ");
+    	lblNome = new JLabel("Digite seu nome:");
+    	lblNome.setForeground(Color.darkGray);
+    	txtNome = new JTextField("Seu nome aqui");
     	
-    	txtIp = new JTextField("127.0.0.1");
-    	txtPorta = new JTextField("12345");
-    	txtNome = new JTextField("Nome");
-    	
-    	Object[] texts = {lblMensage,txtIp, txtPorta, txtNome};
+    	Object[] texts = {lblMensage,lblInfo,lblIp,txtIp,lblPorta,txtPorta,lblNome, txtNome};
     	JOptionPane.showMessageDialog(null,texts);
     	
+    	
+    	
+    	//Tela das mensagens
     	pnlContent = new JPanel();
-    	texto = new JTextArea(100,100);
+    	texto = new JTextArea(100,50);
     	texto.setEditable(false);
     	texto.setBackground(new Color(240,240,240));
     	txtMsg = new JTextField(20);
+    	
+    	
     	
     	 lblHistorico = new JLabel("Histórico");
     	 lblMensagem = new JLabel("Mensagem");
