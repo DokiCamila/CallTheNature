@@ -37,7 +37,7 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
     private JButton btnEnviar;
     private JButton btnSair;
     private JLabel lblHistorico;
-    private JLabel lblMensagem;
+   // private JLabel lblMensagem;
     private JLabel lblIp;
     private JLabel lblPorta;
     private JLabel lblNome;
@@ -53,9 +53,10 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
 
     
     public Cliente() throws IOException{
+    	 
     	//tela de login
-    	JLabel lblMensage = new JLabel("Bem vindo ao Call The Nature! ");
-    	JLabel lblInfo = new JLabel("Por favor confirme as informações abaixo.");
+    	JLabel lblMensage = new JLabel("Bem vindo ao Call The Nature! \r\n");
+    	JLabel lblInfo = new JLabel("Por favor confirme as informações abaixo.\r\n");
     	lblMensage.setFont(new Font("Dialog",Font.ITALIC, 20));
     	lblMensage.setForeground(Color.BLACK);
     	lblInfo.setForeground(Color.darkGray);
@@ -77,41 +78,46 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
     	
     	//Tela das mensagens
     	pnlContent = new JPanel();
-    	texto = new JTextArea(100,50);
+    	texto = new JTextArea(20,70);
     	texto.setEditable(false);
-    	texto.setBackground(new Color(240,240,240));
-    	txtMsg = new JTextField(20);
+    	texto.setBackground(new Color(240,249,240));
+    	txtMsg = new JTextField(56);
     	
     	
     	
-    	 lblHistorico = new JLabel("Histórico");
-    	 lblMensagem = new JLabel("Mensagem");
+    	 lblHistorico = new JLabel("Mensagens");
+    	 lblHistorico.setFont(new Font("Dialog",Font.BOLD, 18));
+    	 //lblMensagem = new JLabel("Digite aqui: ");
          btnEnviar = new JButton("Enviar");
-         btnEnviar.setToolTipText("Enviar Mensagem");
+         btnEnviar.setToolTipText("Clique aqui para enviar Mensagem");
          btnSair = new JButton("Sair");
-         btnSair.setToolTipText("Sair do Chat");
+         btnSair.setToolTipText("Clique aqui para sair do Chat");
          btnEnviar.addActionListener(this);
          btnSair.addActionListener(this);
          btnEnviar.addKeyListener(this);
          txtMsg.addKeyListener(this);
          
+      
+         
+         
+         
          JScrollPane scroll = new JScrollPane(texto);
          texto.setLineWrap(true);
          pnlContent.add(lblHistorico);
          pnlContent.add(scroll);
-         pnlContent.add(lblMensagem);
+         //pnlContent.add(lblMensagem);
          pnlContent.add(txtMsg);
          pnlContent.add(btnSair);
          pnlContent.add(btnEnviar);
-         pnlContent.setBackground(Color.LIGHT_GRAY);
-         texto.setBorder(BorderFactory.createEtchedBorder(Color.GREEN, Color.GREEN));
-         txtMsg.setBorder(BorderFactory.createEtchedBorder(Color.GREEN, Color.GREEN));
+         pnlContent.setBackground(new Color(204,227,211));
+        // texto.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.darkGray));
+         //txtMsg.setBorder(BorderFactory.createEtchedBorder(Color.darkGray, Color.darkGray));
          
          setTitle(txtNome.getText());
          setContentPane(pnlContent);
          setLocationRelativeTo(null);
          setResizable(false);
-         setSize(500,300);
+         setSize(900,500);
          setVisible(true);
          setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
@@ -159,7 +165,7 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
             texto.append("Desconectado \r\n");
         }else{
             bfw.write(msg+"\r\n");
-            texto.append( txtNome.getText() + " diz -> " + txtMsg.getText()+"\r\n");
+            texto.append( txtNome.getText() + " : " + txtMsg.getText()+"\r\n");
         }
         bfw.flush();
         txtMsg.setText("");
