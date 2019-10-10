@@ -12,12 +12,11 @@ package br.com.work;
 	import java.net.Socket;
 	import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+	import javax.swing.ImageIcon;
+	import javax.swing.JLabel;
 	import javax.swing.JOptionPane;
 	import javax.swing.JTextField;
 
-	import br.com.work.Server;
 
 
 public class Server extends Thread{
@@ -47,8 +46,8 @@ public class Server extends Thread{
 		        try{
 
 		            String msg;
-		            OutputStream ou =  this.con.getOutputStream();
-		            Writer ouw = new OutputStreamWriter(ou);
+		            OutputStream out =  this.con.getOutputStream();
+		            Writer ouw = new OutputStreamWriter(out);
 		            BufferedWriter bfw = new BufferedWriter(ouw);
 		            clientes.add(bfw);
 		            nome = msg = bfr.readLine();

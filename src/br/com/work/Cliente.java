@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
-import br.com.work.Cliente;
+
 
 
 public class Cliente extends JFrame implements ActionListener, KeyListener {
@@ -165,11 +165,12 @@ public class Cliente extends JFrame implements ActionListener, KeyListener {
 
             if(bfr.ready()){
                 msg = bfr.readLine();
-                if(msg.equals("Sair"))
+                if(msg.equals("Sair")) {
                     texto.append("Servidor caiu! \r\n");
-                else
+                }else {
                     texto.append(msg+"\r\n");
             }
+         }
     }
     
 
